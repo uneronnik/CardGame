@@ -86,6 +86,15 @@ namespace CardGame
             }
             return false;
         }
+        private Player FindWinPlayer()
+        {
+            foreach (var player in _players)
+            {
+                if (player.Deck.CardCount == 36 - startDeck.CardCount)
+                    return player;
+            }
+            return new Player(0);
+        }
         private Player FindLostPlayer()
         {
             foreach (var player in _players)
@@ -95,15 +104,7 @@ namespace CardGame
             }
             return new Player(0);
         }
-        private Player FindWinPlayer()
-        {
-            foreach (var player in _players)
-            {
-                if (player.Deck.CardCount == 36 / _players.Count)
-                    return player;
-            }
-            return new Player(0);
-        }
+        
         private void WritePlayersCards()
         {
             foreach (var player in _players)
