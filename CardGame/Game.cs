@@ -43,7 +43,8 @@ namespace CardGame
                 playersCards.Add(player.Deck.Pop());
             }
 
-            Player playerWithBiggestCard = _players.ElementAt(FindIndexOfBiggestCard(playersCards.Cards.ToList<Card>()));
+            int indexOfBiggestCard = FindIndexOfBiggestCard(playersCards.Cards.ToList<Card>());
+            Player playerWithBiggestCard = _players.ElementAt(indexOfBiggestCard);
 
             Console.WriteLine($"Игрок номер {playerWithBiggestCard.Number} забирает карты");
             playersCards.Shufle();
